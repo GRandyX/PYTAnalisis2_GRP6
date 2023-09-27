@@ -1,0 +1,8 @@
+# All Node modules directory for NodeJS
+node_modules
+
+# All package-lock.json file for NodeJS
+*-lock.json
+
+# All GIT directory
+#.git
