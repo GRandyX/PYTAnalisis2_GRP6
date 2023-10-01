@@ -2,8 +2,8 @@
 
 Proyecto de Analisis 2
 
-URL de archivo de trabajo compartido:
-https://docs.google.com/document/d/1HLP9drL7U9GyA8eFCfoFP2akNrcbnjnN
+URL de espacio de trabajo compartido:
+https://drive.google.com/drive/folders/106baBbzrhl1m_2UDY-Y2_uS3tLKXJSfx
 
 URL de backlogs del proyecto:
 https://garyxiloj.atlassian.net/jira/software/projects/PG/boards/1/backlog
