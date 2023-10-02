@@ -1,6 +1,6 @@
 import {createPool} from 'mysql2/promise'
 
-//Cambiar las configuraciones según las necesidades 
+//Cambiar las configuraciones según las bd
 export const pool = createPool({
     host: 'localhost',
     user: 'root', 
