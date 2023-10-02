@@ -11,7 +11,7 @@ app.use(morgan('dev'))
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
-app.use(usuariosRoutes)
+app.use('/api',usuariosRoutes)
 
 app.listen(port, () => console.log(`Escuchando en puerto ${port}...`))
 
