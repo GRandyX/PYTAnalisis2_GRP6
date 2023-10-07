@@ -18,7 +18,7 @@ export class AuthService {
 	});
 
 	validateSignIn(params: object) {
-		return this.http.post( vars.url_apirest + "/login", params, { headers: this.headers } ).pipe( map(res => res) );
+		return this.http.post( vars.url_apirest + "/authenticate", params, { headers: this.headers } ).pipe( map(res => res) );
 	}
 
 	loggedIn(): boolean {
