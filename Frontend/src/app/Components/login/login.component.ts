@@ -32,8 +32,8 @@ export class LoginComponent extends Shared implements OnInit {
 
 	createFormGroup() {
 		return new FormGroup({
-			username: new FormControl(null, [Validators.required]),
-			password: new FormControl(null, [Validators.required])
+			Usuario: new FormControl(null, [Validators.required]),
+			Contrasena: new FormControl(null, [Validators.required])
 		});
 	}
 
