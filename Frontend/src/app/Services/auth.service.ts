@@ -21,6 +21,10 @@ export class AuthService {
 		return this.http.post( vars.url_apirest + "/authenticate", params, { headers: this.headers } ).pipe( map(res => res) );
 	}
 
+	signUp(params: object) {
+		return this.http.post( vars.url_apirest + "/register", params, { headers: this.headers } ).pipe( map(res => res) );
+	}
+
 	loggedIn(): boolean {
 		return !!localStorage.getItem('token');
 	}

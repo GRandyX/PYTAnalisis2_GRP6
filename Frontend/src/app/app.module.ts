@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 /** Material Designe */
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 /** Componentess */
 import { LoginComponent } from './Components/login/login.component';
@@ -17,12 +18,14 @@ import { ToastComponent } from './Components/toast/toast.component';
 /** Servicios */
 import { ToastService } from './Services/toast.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterComponent } from './Components/register/register.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
-		ToastComponent
+		ToastComponent,
+  RegisterComponent
 	],
 	imports: [
 		BrowserModule,
@@ -31,7 +34,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		NgbModule,
 		HttpClientModule,
   		BrowserAnimationsModule,
-		MatInputModule
+		MatInputModule,
+		MatSelectModule
 	],
 	providers: [
 		ToastService
