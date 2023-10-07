@@ -5,6 +5,7 @@
   "main": "src/mainserver.js",
   "type": "module",
   "scripts": {
+    "start": "node src/mainserver.js",
     "dev": "nodemon src/mainserver.js"
   },
   "author": "Integrantes del Grupo #6 (Gary Xiloj, Andres Ixcamey, Dennis Alquijay, Jose Esquite)",
