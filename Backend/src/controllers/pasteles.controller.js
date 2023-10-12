@@ -14,7 +14,7 @@ export const listadoPasteles = async(req, res) => {
 export const obtenerPastel = async(req, res) => {
     const IdPastel = req.params.id
     try{
-        const [rows] = await pool.query('SELECT * FROM pastel WHERE Id = ?', [IdPastel])
+        const [rows] = await pool.query('SELECT * FROM pasteles WHERE Id = ?', [IdPastel])
         if (rows.length == 0){
             res.status(404).json({message: 'Pastel no encontrado'})
         }else{
@@ -68,6 +68,23 @@ export const borrarPastel = async(req, res) => {
         }
     }catch(error){
         console.error('Error al borrar el pastel', error)
+        res.status(500).send('Error interno del servidor')
+    }
+}
+
+export const actualizarPastel = async(req, res) => {
+    const IdPastel = req.params.id
+    const {NombrePastel, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia} = req.body
+    try{
+        const[result] = await pool.query('UPDATE pasteles SET NombrePastes = ?, IdSabor = ?, IdRelleno = ?, Descripcion = ?, Costo = ?, Precio = ?, Existencia = ? WHERE Id = ?', 
+        [NombrePastel, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia, IdPastel])
+        if (result.affectedRows == 0){
+            res.status(404).json({message: 'Pastel no encontrado'})
+        }else{
+            res.json({message: 'Pastel actualizado exitosamente'})
+        }
+    }catch(error){
+        console.error('Error al actualizar el pastel', error)
         res.status(500).send('Error interno del servidor')
     }
 }
