@@ -12,13 +12,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 /** Componentess */
-import { LoginComponent } from './Components/login/login.component';
 import { ToastComponent } from './Components/toast/toast.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { NavmenuComponent } from './Components/navmenu/navmenu.component';
 
 /** Servicios */
 import { ToastService } from './Services/toast.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterComponent } from './Components/register/register.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		AppComponent,
 		LoginComponent,
 		ToastComponent,
-  RegisterComponent
+  		RegisterComponent,
+		NavmenuComponent
 	],
 	imports: [
 		BrowserModule,

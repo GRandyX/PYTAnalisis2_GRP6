@@ -1,0 +1,12 @@
+li.nav-item:hover > a.nav-link.dropdown-toggle + ul.dropdown-menu {
+    display: block;
+}
+
+li.nav-item:hover {
+    background-color: #7fb4ff;
+}
+
+li.nav-item > a .ng-fa-icon {
+    margin-right: .5rem;
+    font-size: 1.2rem;
+}
