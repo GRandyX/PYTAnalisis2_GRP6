@@ -26,7 +26,7 @@ export class LoginComponent extends Shared implements OnInit {
 
 	ngOnInit(): void {
 		if (this.authService.loggedIn()) {
-			this.router.navigate(['/inicio']);
+			this.router.navigate(['/home']);
 		}
 	}
 
@@ -41,16 +41,16 @@ export class LoginComponent extends Shared implements OnInit {
 		if (this.userForm.valid) {
 			this.authService.validateSignIn(this.userForm.value).subscribe(
 				(res:any) => {
-					if (res.errors) {
-						this.showMsgDanger(res.errors);
+					if (res.error) {
+						this.showMsgDanger(res.error);
 					} else {
-						localStorage.setItem('token', res.data.token);
-						this.router.navigate(['/inicio']);
+						localStorage.setItem('token', res);
+						this.router.navigate(['/home']);
 					}
 				},
 				(err:any) => {
 					if (err.name === "HttpErrorResponse")
-						this.showMsgDanger(["Hubo un error al intentar loguearse"]);
+						this.showMsgDanger([ err.error.error ]);
 				}
 			);
 		} else {
