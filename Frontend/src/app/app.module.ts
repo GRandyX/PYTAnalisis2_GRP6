@@ -16,6 +16,7 @@ import { ToastComponent } from './Components/toast/toast.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { NavmenuComponent } from './Components/navmenu/navmenu.component';
+import { HomeComponent } from './Components/home/home.component';
 
 /** Servicios */
 import { ToastService } from './Services/toast.service';
@@ -28,7 +29,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		LoginComponent,
 		ToastComponent,
   		RegisterComponent,
-		NavmenuComponent
+		NavmenuComponent,
+		HomeComponent
 	],
 	imports: [
 		BrowserModule,
