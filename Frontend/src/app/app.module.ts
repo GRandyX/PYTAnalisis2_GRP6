@@ -19,6 +19,7 @@ import { ToastComponent } from './Components/toast/toast.component';
 import { ToastService } from './Services/toast.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './Components/register/register.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
 	declarations: [
@@ -35,7 +36,8 @@ import { RegisterComponent } from './Components/register/register.component';
 		HttpClientModule,
   		BrowserAnimationsModule,
 		MatInputModule,
-		MatSelectModule
+		MatSelectModule,
+  FontAwesomeModule
 	],
 	providers: [
 		ToastService
