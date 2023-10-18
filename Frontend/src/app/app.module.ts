@@ -7,6 +7,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+/** Servicios */
+import { ToastService } from './Services/toast.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 /** Material Designe */
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -18,10 +23,6 @@ import { RegisterComponent } from './Components/register/register.component';
 import { NavmenuComponent } from './Components/navmenu/navmenu.component';
 import { HomeComponent } from './Components/home/home.component';
 
-/** Servicios */
-import { ToastService } from './Services/toast.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
 	declarations: [
@@ -30,7 +31,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		ToastComponent,
   		RegisterComponent,
 		NavmenuComponent,
-		HomeComponent
+		HomeComponent,
 	],
 	imports: [
 		BrowserModule,
