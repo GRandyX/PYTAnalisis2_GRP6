@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS `pasteles`;
 CREATE TABLE `pasteles` (
-  `Id` int NOT NULL,
+  `Id` int NOT NULL AUTO_INCREMENT,
   `NombrePastes` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `IdSabor` int DEFAULT NULL,
   `IdRelleno` int DEFAULT NULL,

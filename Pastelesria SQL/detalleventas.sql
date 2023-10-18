@@ -1,7 +1,7 @@
 
 DROP TABLE IF EXISTS `detalleventas`;
 CREATE TABLE `detalleventas` (
-  `Id` int NOT NULL,
+  `Id` int NOT NULL AUTO_INCREMENT,
   `IdVenta` int DEFAULT NULL,
   `IdPastel` int DEFAULT NULL,
   `NombrePastel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,

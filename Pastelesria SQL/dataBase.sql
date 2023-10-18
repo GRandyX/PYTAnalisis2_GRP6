@@ -16,7 +16,7 @@
 /* PERMISOS DE USUARIOS */
 DROP TABLE IF EXISTS `permisosusuario`;
 CREATE TABLE `permisosusuario` (
-	`Id` int NOT NULL,
+	`Id` int NOT NULL AUTO_INCREMENT,
 	`NombrePermiso` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
 	`NivelPermiso` int DEFAULT NULL,
 	PRIMARY KEY (`Id`) USING BTREE
@@ -35,13 +35,13 @@ CREATE TABLE `usuario` (
 	UNIQUE KEY `Usuario` (`Usuario`) USING BTREE,
 	KEY `IdPermiso` (`IdPermiso`) USING BTREE,
 	CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`IdPermiso`) REFERENCES `permisosusuario` (`Id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 /* CLIENTES */
 DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE `clientes` (
-	`Id` int NOT NULL,
+	`Id` int NOT NULL AUTO_INCREMENT,
 	`NombreCliente` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
 	`NIT` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
 	`Direccion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE `clientes` (
 /* PROVEEDORES */
 DROP TABLE IF EXISTS `proveedores`;
 CREATE TABLE `proveedores` (
-	`Id` int NOT NULL,
+	`Id` int NOT NULL AUTO_INCREMENT,
 	`NombreProveedor` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
 	`NIT` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
 	`Direccion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE `proveedores` (
 /* PRODUCTOS */
 DROP TABLE IF EXISTS `productos`;
 CREATE TABLE `productos` (
-	`Id` int NOT NULL,
+	`Id` int NOT NULL AUTO_INCREMENT,
 	`Descripcion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
 	`Costo` decimal(10,2) DEFAULT NULL,
 	`IdProveedor` int DEFAULT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE `relleno` (
 	`NombreRelleno` varchar(150) DEFAULT NULL,
 	`Descripcion` varchar(255) DEFAULT NULL,
 	PRIMARY KEY (`IdRelleno`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 /* SABORES */
@@ -96,13 +96,13 @@ CREATE TABLE `sabor` (
 	`NombreSabor` varchar(150) DEFAULT NULL,
 	`Descripcion` varchar(255) DEFAULT NULL,
 	PRIMARY KEY (`IdSabor`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 /* PASTELES */
 DROP TABLE IF EXISTS `pasteles`;
 CREATE TABLE `pasteles` (
-	`Id` int NOT NULL,
+	`Id` int NOT NULL AUTO_INCREMENT,
 	`NombrePastes` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
 	`IdSabor` int DEFAULT NULL,
 	`IdRelleno` int DEFAULT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE `pasteles` (
 /* VENTAS */
 DROP TABLE IF EXISTS `ventas`;
 CREATE TABLE `ventas` (
-	`Id` int NOT NULL,
+	`Id` int NOT NULL AUTO_INCREMENT,
 	`IdCliente` int DEFAULT NULL,
 	`NombreCliente` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
 	`Numero` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -150,7 +150,7 @@ CREATE TABLE `ingredientes_pasteles` (
 /* DETALLE DE VENTAS */
 DROP TABLE IF EXISTS `detalleventas`;
 CREATE TABLE `detalleventas` (
-	`Id` int NOT NULL,
+	`Id` int NOT NULL AUTO_INCREMENT,
 	`IdVenta` int DEFAULT NULL,
 	`IdPastel` int DEFAULT NULL,
 	`NombrePastel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
