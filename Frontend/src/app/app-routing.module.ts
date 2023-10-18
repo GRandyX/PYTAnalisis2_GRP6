@@ -7,6 +7,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { CatalogoComponent } from './Components/catalogo/catalogo.component';
 import { RellenosComponent } from './Components/rellenos/rellenos.component';
 import { SaboresComponent } from './Components/sabores/sabores.component';
+import { PastelesComponent } from './Components/pasteles/pasteles.component';
 
 const routes: Routes = [
 	{
@@ -40,6 +41,11 @@ const routes: Routes = [
 	{
 		path: "sabores",
 		component: SaboresComponent,
+		canActivate: [authGuard]
+	},
+	{
+		path: "pasteles",
+		component: PastelesComponent,
 		canActivate: [authGuard]
 	},
 	}
