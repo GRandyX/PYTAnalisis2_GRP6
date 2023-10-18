@@ -22,6 +22,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { NavmenuComponent } from './Components/navmenu/navmenu.component';
 import { HomeComponent } from './Components/home/home.component';
+import { CatalogoComponent } from './Components/catalogo/catalogo.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { HomeComponent } from './Components/home/home.component';
   		RegisterComponent,
 		NavmenuComponent,
 		HomeComponent,
+		CatalogoComponent,
 	],
 	imports: [
 		BrowserModule,
