@@ -26,6 +26,7 @@ import { CatalogoComponent } from './Components/catalogo/catalogo.component';
 import { RellenosComponent } from './Components/rellenos/rellenos.component';
 import { SaboresComponent } from './Components/sabores/sabores.component';
 import { PastelesComponent } from './Components/pasteles/pasteles.component';
+import { ProveedoresComponent } from './Components/proveedores/proveedores.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { PastelesComponent } from './Components/pasteles/pasteles.component';
 		RellenosComponent,
 		SaboresComponent,
 		PastelesComponent,
+		ProveedoresComponent,
 	],
 	imports: [
 		BrowserModule,
