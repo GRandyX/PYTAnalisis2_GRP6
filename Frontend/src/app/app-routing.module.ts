@@ -5,6 +5,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { HomeComponent } from './Components/home/home.component';
 import { CatalogoComponent } from './Components/catalogo/catalogo.component';
+import { RellenosComponent } from './Components/rellenos/rellenos.component';
 
 const routes: Routes = [
 	{
@@ -28,6 +29,11 @@ const routes: Routes = [
 	{
 		path: "catalogo",
 		component: CatalogoComponent,
+		canActivate: [authGuard]
+	},
+	{
+		path: "rellenos",
+		component: RellenosComponent,
 		canActivate: [authGuard]
 	},
 	}
