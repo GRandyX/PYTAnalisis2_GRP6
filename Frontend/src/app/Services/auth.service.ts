@@ -5,24 +5,24 @@ import { vars } from 'src/app/helpers';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class AuthService {
 	constructor(
 		private http: HttpClient,
 		private router: Router
-	) {}
+	) { }
 
 	headers: HttpHeaders = new HttpHeaders({
 		"Content-Type": "application/json"
 	});
 
 	validateSignIn(params: object) {
-		return this.http.post( vars.url_apirest + "/authenticate", params, { headers: this.headers } ).pipe( map(res => res) );
+		return this.http.post(vars.url_apirest + "/authenticate", params, { headers: this.headers }).pipe(map(res => res));
 	}
 
 	signUp(params: object) {
-		return this.http.post( vars.url_apirest + "/register", params, { headers: this.headers } ).pipe( map(res => res) );
+		return this.http.post(vars.url_apirest + "/register", params, { headers: this.headers }).pipe(map(res => res));
 	}
 
 	loggedIn(): boolean {
@@ -30,7 +30,7 @@ export class AuthService {
 	}
 
 	verifyToken() {
-		return this.http.post( vars.url_apirest + "/verify-token", [], { headers: this.headers } ).pipe( map(res => res) );
+		return this.http.post(vars.url_apirest + "/verify-token", [], { headers: this.headers }).pipe(map(res => res));
 	}
 
 	getToken() {
