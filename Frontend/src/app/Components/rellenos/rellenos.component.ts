@@ -13,7 +13,11 @@ import { ToastService } from 'src/app/Services/toast.service';
 	styleUrls: ['./rellenos.component.css']
 })
 export class RellenosComponent extends Shared implements OnInit {
+	faTrash = faTrash;
+	faEdit = faEdit;
 	formGroup: FormGroup;
+	rellenosLst:any = [];
+	modoNuevo:boolean = true;
 
 	constructor(
 		toastService: ToastService,
@@ -25,33 +29,70 @@ export class RellenosComponent extends Shared implements OnInit {
 		this.formGroup = this.createFormGroup();
 	}
 
-	ngOnInit(): void { }
+	ngOnInit(): void {
+		this.obtenerRellenos();
+	}
 
 	createFormGroup() {
 		return new FormGroup({
-			Nombre: new FormControl(null, [Validators.required]),
-			Descripcion: new FormControl(null, [Validators.required])
+			Id: new FormControl(null),
+			NombreRelleno: new FormControl(null, [Validators.required]),
+			Descripcion: new FormControl(null)
 		});
 	}
 
-	faTrash = faTrash;
-	faEdit = faEdit;
+	clearForm() {
+		this.formGroup.get("Id")?.setValue("");
+		this.formGroup.get("NombreRelleno")?.setValue("");
+		this.formGroup.get("Descripcion")?.setValue("");
+	}
+
+	obtenerRellenos() {
+		this.rellenosService.obtenerRellenos().subscribe({
+			next: (res) => {
+				this.rellenosLst = res;
+			}
+		});
+	}
 
 	registrar() {
 		if (this.formGroup.valid) {
 
-			this.rellenosService.crearRelleno(this.formGroup.value).subscribe({
-				next: (res) => {
-					this.showMsgSuccess("Registro creado con éxito");
-				},
-				error: (err:any) => {
-					if (err.name === "HttpErrorResponse")
-						this.showMsgDanger(["Error al registrar relleno"]);
-				},
-				complete: () => {
-					console.log("**********  FUNCION REGISTRAR COMPLETA  **********");
-				}
-			});
+			let params = this.formGroup.value;
+			let id = params.Id;
+			delete params.id;
+
+			if (this.modoNuevo) {
+				this.rellenosService.crearRelleno(params).subscribe({
+					next: (res) => {
+						this.showMsgSuccess("Registro creado con éxito");
+						this.obtenerRellenos();
+						this.clearForm();
+					},
+					error: (err:any) => {
+						if (err.name === "HttpErrorResponse")
+							this.showMsgDanger(["Error al registrar relleno"]);
+					},
+					complete: () => {
+						console.log("**********  FUNCION REGISTRAR COMPLETA  **********");
+					}
+				});
+			} else {
+				this.rellenosService.actualizarRelleno(id, params).subscribe({
+					next: (res) => {
+						this.showMsgSuccess("Registro editado con éxito");
+						this.clearForm();
+					},
+					error: (err:any) => {
+						if (err.name === "HttpErrorResponse")
+							this.showMsgDanger(["Error al editar relleno"]);
+					},
+					complete: () => {
+						console.log("**********  FUNCION EDITAR COMPLETA  **********");
+						this.modoNuevo = true;
+					}
+				});
+			}
 
 		} else {
 			this.showMsgDanger(["Campos de formulario no validos"]);
@@ -63,6 +104,7 @@ export class RellenosComponent extends Shared implements OnInit {
 		this.rellenosService.eliminarRelleno(id).subscribe({
 			next: (res) => {
 				this.showMsgSuccess("Registro eliminado con éxito");
+				this.obtenerRellenos();
 			},
 			error: (err:any) => {
 				if (err.name === "HttpErrorResponse")
@@ -73,5 +115,12 @@ export class RellenosComponent extends Shared implements OnInit {
 			}
 		});
 
+	}
+
+	modoEdicion(param: any) {
+		this.modoNuevo = false;
+		this.formGroup.get("Id")?.setValue(param.IdRelleno);
+		this.formGroup.get("NombreRelleno")?.setValue(param.NombreRelleno);
+		this.formGroup.get("Descripcion")?.setValue(param.Descripcion);
 	}
 }

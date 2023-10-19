@@ -4,16 +4,19 @@
         <h1 class="col-auto fw-bold">Rellenos</h1>
     </div>
 
+
     <div class="row">
         <form class="row form" [formGroup]="formGroup" (ngSubmit)="registrar()" novalidate>
             <div class="col-2 form-group">
+                <input type="hidden"  formControlName="Id">
+
                 <mat-form-field appearance="fill">
                     <mat-label>Nombre de relleno</mat-label>
-                    <input matInput formControlName="Nombre" required>
-                    <mat-error class="form-error-container" *ngIf="formGroup.get('Nombre')?.errors &&
-                        (formGroup.get('Nombre')?.dirty || formGroup.get('Nombre')?.touched)">
+                    <input matInput formControlName="NombreRelleno" required>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('NombreRelleno')?.errors &&
+                        (formGroup.get('NombreRelleno')?.dirty || formGroup.get('NombreRelleno')?.touched)">
                         <ul>
-                            <li *ngIf="formGroup.get('Nombre')?.errors">Nombre de relleno es erroneo</li>
+                            <li *ngIf="formGroup.get('NombreRelleno')?.errors">Nombre de relleno es erroneo</li>
                         </ul>
                     </mat-error>
                 </mat-form-field>
@@ -22,21 +25,16 @@
             <div class="col-6 form-group">
                 <mat-form-field appearance="fill">
                     <mat-label>Descripción de relleno</mat-label>
-                    <input matInput formControlName="Descripcion" required>
-                    <mat-error class="form-error-container" *ngIf="formGroup.get('Descripcion')?.errors &&
-                        (formGroup.get('Descripcion')?.dirty || formGroup.get('Descripcion')?.touched)">
-                        <ul>
-                            <li *ngIf="formGroup.get('Descripcion')?.errors">Descripción de relleno es erroneo</li>
-                        </ul>
-                    </mat-error>
+                    <input matInput formControlName="Descripcion">
                 </mat-form-field>
             </div>
 
             <div class="col-2 form-group">
-                <button type="submit" class="btn btn-lg btn-primary btn-block">Registrar</button>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Salvar</button>
             </div>
         </form>
     </div>
+
 
     <div class="row">
         <div class="col-12">
@@ -51,16 +49,18 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td class="col-auto fw-bold fs-5">Relleno 01</td>
-                            <td class="fs-6">Descripción 01</td>
+
+                        <tr *ngFor="let item of rellenosLst" class="text-left">
+                            <td class="col-auto fw-bold fs-6">{{ item.NombreRelleno }}</td>
+                            <td class="fs-6">{{ item.Descripcion }}</td>
                             <td class="col-2">
                                 <div class="opciones">
-                                    <fa-icon [icon]="faEdit" class="fs-3 text-info" title="Editar relleno"></fa-icon>
-                                    <fa-icon [icon]="faTrash" class="fs-3 text-danger" title="Eliminar relleno" (click)="eliminar(1)"></fa-icon>
+                                    <fa-icon [icon]="faEdit" class="fs-3 text-info" title="Editar relleno" (click)="modoEdicion(item)"></fa-icon>
+                                    <fa-icon [icon]="faTrash" class="fs-3 text-danger" title="Eliminar relleno" (click)="eliminar(item.IdRelleno)"></fa-icon>
                                 </div>
                             </td>
                         </tr>
+
                     </tbody>
                 </table>
             </div>
