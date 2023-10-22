@@ -4,6 +4,8 @@ import usuariosRoutes from './routes/usuarios.routes.js'
 import saboresRoutes from './routes/sabores.routes.js'
 import rellenosRoutes from './routes/rellenos.routes.js'
 import pastelesRoutes from './routes/pasteles.routes.js'
+import productosRoutes from './routes/productos.routes.js'
+import ingredientsRoutes from './routes/ingredientes.routes.js'
 import cors from 'cors'
 
 const app = express()
@@ -20,6 +22,8 @@ app.use('/api',usuariosRoutes)
 app.use('/api', saboresRoutes)
 app.use('/api', rellenosRoutes)
 app.use('/api', pastelesRoutes)
+app.use('/api', productosRoutes)
+app.use('/api', ingredientsRoutes)
 
 app.listen(port, () => console.log(`Escuchando en puerto ${port}...`))
 
