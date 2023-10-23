@@ -81,6 +81,7 @@ export class RellenosComponent extends Shared implements OnInit {
 				this.rellenosService.actualizarRelleno(id, params).subscribe({
 					next: (res) => {
 						this.showMsgSuccess("Registro editado con éxito");
+						this.obtenerRellenos();
 						this.clearForm();
 					},
 					error: (err:any) => {
