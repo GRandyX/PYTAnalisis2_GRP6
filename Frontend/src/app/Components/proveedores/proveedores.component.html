@@ -1,1 +1,86 @@
-<p>proveedores works!</p>
+<div>
+    <div class="row justify-content-center titulo-pagina">
+        <h1 class="col-auto fs-2 fw-bold my-5">Proveedores</h1>
+    </div>
+
+
+    <div class="row">
+        <form class="row form" [formGroup]="formGroup" (ngSubmit)="registrar()" novalidate>
+            <div class="col-2 form-group">
+                <input type="hidden" formControlName="Id">
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre de proveedor</mat-label>
+                    <input matInput formControlName="NombreProveedor" required>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('NombreProveedor')?.errors &&
+                        (formGroup.get('NombreProveedor')?.dirty || formGroup.get('NombreProveedor')?.touched)">
+                        <ul>
+                            <li *ngIf="formGroup.get('NombreProveedor')?.errors">Nombre de proveedor es erroneo</li>
+                        </ul>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-2 form-group">
+                <input type="hidden" formControlName="Id">
+
+                <mat-form-field appearance="fill">
+                    <mat-label>NIT de proveedor</mat-label>
+                    <input matInput formControlName="NitProveedor" required>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('NitProveedor')?.errors &&
+                        (formGroup.get('NitProveedor')?.dirty || formGroup.get('NitProveedor')?.touched)">
+                        <ul>
+                            <li *ngIf="formGroup.get('NitProveedor')?.errors">NIT de proveedor es erroneo</li>
+                        </ul>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-6 form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Dirección de proveedor</mat-label>
+                    <input matInput formControlName="Direccion">
+                </mat-form-field>
+            </div>
+
+            <div class="col-2 form-group">
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Salvar</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="col-auto">Nombre</th>
+                            <th class="col-2">NIT</th>
+                            <th>Dirección</th>
+                            <th class="col-2">Opciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr *ngFor="let item of proveedoresLst" class="text-left">
+                            <td class="col-auto fw-bold fs-6">{{ item.NombreProveedor }}</td>
+                            <td class="col-2 fs-6">{{ item.NitProveedor }}</td>
+                            <td class="fs-6">{{ item.Direccion }}</td>
+                            <td class="col-2">
+                                <div class="opciones">
+                                    <fa-icon [icon]="faEdit" class="fs-3 text-info" title="Editar proveedor" (click)="modoEdicion(item)"></fa-icon>
+                                    <fa-icon [icon]="faTrash" class="fs-3 text-danger" title="Eliminar proveedor" (click)="eliminar(item.IdProveedor)"></fa-icon>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
