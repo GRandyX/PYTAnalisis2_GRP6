@@ -27,6 +27,7 @@ import { RellenosComponent } from './Components/rellenos/rellenos.component';
 import { SaboresComponent } from './Components/sabores/sabores.component';
 import { PastelesComponent } from './Components/pasteles/pasteles.component';
 import { ProveedoresComponent } from './Components/proveedores/proveedores.component';
+import { ProductosComponent } from './Components/productos/productos.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ProveedoresComponent } from './Components/proveedores/proveedores.compo
 		SaboresComponent,
 		PastelesComponent,
 		ProveedoresComponent,
+  		ProductosComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -52,7 +54,7 @@ import { ProveedoresComponent } from './Components/proveedores/proveedores.compo
   		BrowserAnimationsModule,
 		MatInputModule,
 		MatSelectModule,
-  FontAwesomeModule
+  		FontAwesomeModule
 	],
 	providers: [
 		ToastService
