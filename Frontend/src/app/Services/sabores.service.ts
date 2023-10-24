@@ -24,6 +24,10 @@ export class SaboresService {
 		return this.http.get( vars.url_apirest + "/flavors", { headers: this.headers } ).pipe( map(res => res) );
 	}
 
+	obtenerSabor(id: number) {
+		return this.http.get( vars.url_apirest + "/flavor/"+ id, { headers: this.headers } ).pipe( map(res => res) );
+	}
+
 	actualizarSabor(id: number, params: object) {
 		return this.http.put( vars.url_apirest + "/update/flavor/"+ id, params, { headers: this.headers } ).pipe( map(res => res) );
 	}

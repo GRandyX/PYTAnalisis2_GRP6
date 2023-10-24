@@ -24,6 +24,10 @@ export class RellenosService {
 		return this.http.get( vars.url_apirest + "/fillings", { headers: this.headers } ).pipe( map(res => res) );
 	}
 
+	obtenerRelleno(id: number) {
+		return this.http.get( vars.url_apirest + "/filling/"+ id, { headers: this.headers } ).pipe( map(res => res) );
+	}
+
 	actualizarRelleno(id: number, params: object) {
 		return this.http.put( vars.url_apirest + "/update/filling/"+ id, params, { headers: this.headers } ).pipe( map(res => res) );
 	}
