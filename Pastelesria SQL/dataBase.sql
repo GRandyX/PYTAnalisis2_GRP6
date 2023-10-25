@@ -98,11 +98,17 @@ CREATE TABLE `sabor` (
 	PRIMARY KEY (`IdSabor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+/* FAMILIA PASTELES */
+CREATE TABLE `familia_pasteles`(
+	`IdFamilia` int primary key AUTO_INCREMENT,
+    `NombreFamilia` VARCHAR(150)
+);
 
 /* PASTELES */
 DROP TABLE IF EXISTS `pasteles`;
 CREATE TABLE `pasteles` (
 	`Id` int NOT NULL AUTO_INCREMENT,
+	`IdFamilia` int DEFAULT NULL,
 	`NombrePastes` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
 	`IdSabor` int DEFAULT NULL,
 	`IdRelleno` int DEFAULT NULL,
@@ -110,11 +116,14 @@ CREATE TABLE `pasteles` (
 	`Costo` decimal(10,2) DEFAULT NULL,
 	`Precio` decimal(10,2) DEFAULT NULL,
 	`Existencia` int DEFAULT NULL,
+	`FechaCreacion` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`Id`) USING BTREE,
+	KEY `IdFamilia` (`IdFamilia`),
 	KEY `IdSabor` (`IdSabor`),
 	KEY `IdRelleno` (`IdRelleno`),
 	CONSTRAINT `pasteles_ibfk_1` FOREIGN KEY (`IdSabor`) REFERENCES `sabor` (`IdSabor`),
 	CONSTRAINT `pasteles_ibfk_2` FOREIGN KEY (`IdRelleno`) REFERENCES `relleno` (`IdRelleno`)
+	CONSTRAINT `pasteles_ibfk_3` FOREIGN KEY (`IdFamilia`) REFERENCES `familia_pasteles`(`IdFamilia`);
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
