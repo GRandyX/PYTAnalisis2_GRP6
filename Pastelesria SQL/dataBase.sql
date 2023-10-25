@@ -100,7 +100,7 @@ CREATE TABLE `sabor` (
 
 /* FAMILIA PASTELES */
 CREATE TABLE `familia_pasteles`(
-	`IdFamilia` int primary key,
+	`IdFamilia` int primary key AUTO_INCREMENT,
     `NombreFamilia` VARCHAR(150)
 );
 
