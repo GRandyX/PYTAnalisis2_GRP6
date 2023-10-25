@@ -15,7 +15,7 @@
                     <mat-error class="form-error-container" *ngIf="formGroup.get('NombreSabor')?.errors &&
                         (formGroup.get('NombreSabor')?.dirty || formGroup.get('NombreSabor')?.touched)">
                         <ul>
-                            <li *ngIf="formGroup.get('NombreSabor')?.errors">Nombre de sabor es erroneo</li>
+                            <li *ngIf="formGroup.get('NombreSabor')?.errors">Campo requerido</li>
                         </ul>
                     </mat-error>
                 </mat-form-field>

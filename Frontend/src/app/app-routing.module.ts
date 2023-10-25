@@ -14,7 +14,7 @@ import { ProductosComponent } from './Components/productos/productos.component';
 const routes: Routes = [
 	{
 		path: "",
-		redirectTo: "/login",
+		redirectTo: "/home",
 		pathMatch: "full"
 	},
 	{
@@ -28,12 +28,12 @@ const routes: Routes = [
 	{
 		path: "home",
 		component: HomeComponent,
-		canActivate: [authGuard]
+		//canActivate: [authGuard]
 	},
 	{
 		path: "catalogo",
 		component: CatalogoComponent,
-		canActivate: [authGuard]
+		//canActivate: [authGuard]
 	},
 	{
 		path: "rellenos",

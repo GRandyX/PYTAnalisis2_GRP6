@@ -15,7 +15,7 @@
                     <mat-error class="form-error-container" *ngIf="formGroup.get('NombreRelleno')?.errors &&
                         (formGroup.get('NombreRelleno')?.dirty || formGroup.get('NombreRelleno')?.touched)">
                         <ul>
-                            <li *ngIf="formGroup.get('NombreRelleno')?.errors">Nombre de relleno es erroneo</li>
+                            <li *ngIf="formGroup.get('NombreRelleno')?.errors">Campo requerido</li>
                         </ul>
                     </mat-error>
                 </mat-form-field>

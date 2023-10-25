@@ -96,7 +96,7 @@ export class RellenosComponent extends Shared implements OnInit {
 			}
 
 		} else {
-			this.showMsgDanger(["Campos de formulario no validos"]);
+			this.showMsgDanger(["Faltan campos requeridos del formulario"]);
 		}
 	}
 

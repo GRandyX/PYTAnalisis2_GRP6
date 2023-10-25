@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Shared } from 'src/app/Class/shared';
 import { ToastService } from '../../Services/toast.service';
 import { AuthService } from 'src/app/Services/auth.service';
-import { faCakeCandles, faCogs, faHome, faKey } from '@fortawesome/free-solid-svg-icons';
+import { faCakeCandles, faCogs, faHome, faKey, faClose } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
 	selector: 'app-navmenu',
@@ -24,9 +24,14 @@ export class NavmenuComponent extends Shared implements OnInit {
 	faKey = faKey;
 	faCakeCandles = faCakeCandles;
 	faCogs = faCogs;
+	faClose = faClose;
 
 	isLogged() {
 		return this.authService.loggedIn();
+	}
+
+	getRol() {
+		return localStorage.getItem("token");
 	}
 
 	logout() {

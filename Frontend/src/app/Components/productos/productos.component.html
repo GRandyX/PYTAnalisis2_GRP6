@@ -15,7 +15,7 @@
                     <mat-error class="form-error-container" *ngIf="formGroup.get('Descripcion')?.errors &&
                         (formGroup.get('Descripcion')?.dirty || formGroup.get('Descripcion')?.touched)">
                         <ul>
-                            <li *ngIf="formGroup.get('Descripcion')?.errors">Descripción del producto es erroneo</li>
+                            <li *ngIf="formGroup.get('Descripcion')?.errors">Campo requerido</li>
                         </ul>
                     </mat-error>
                 </mat-form-field>
@@ -28,7 +28,7 @@
                     <mat-error class="form-error-container" *ngIf="formGroup.get('Costo')?.errors &&
                         (formGroup.get('Costo')?.dirty || formGroup.get('Costo')?.touched)">
                         <ul>
-                            <li *ngIf="formGroup.get('Costo')?.errors">Costo del producto es erroneo</li>
+                            <li *ngIf="formGroup.get('Costo')?.errors">Campo requerido</li>
                         </ul>
                     </mat-error>
                 </mat-form-field>
@@ -44,7 +44,7 @@
                     <mat-error class="form-error-container" *ngIf="formGroup.get('IdProveedor')?.errors &&
                         (formGroup.get('IdProveedor')?.dirty || formGroup.get('IdProveedor')?.touched)">
                         <ul>
-                            <li *ngIf="formGroup.get('IdProveedor')?.errors">Proveedor del producto es erroneo</li>
+                            <li *ngIf="formGroup.get('IdProveedor')?.errors">Campo requerido</li>
                         </ul>
                     </mat-error>
                 </mat-form-field>
