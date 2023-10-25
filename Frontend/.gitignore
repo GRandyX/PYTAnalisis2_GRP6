@@ -1,16 +1,5 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# All Node modules directory for NodeJS
-#node_modules
-
-# All package-lock.json file for NodeJS
-*-lock.json
-
-# All GIT directory
-#.git
-.angular
-
-
 # Compiled output
 /dist
 /tmp
@@ -18,7 +7,7 @@
 /bazel-out
 
 # Node
-node_modules
+/node_modules
 npm-debug.log
 yarn-error.log
 

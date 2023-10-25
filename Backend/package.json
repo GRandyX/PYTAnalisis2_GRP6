@@ -1,0 +1,23 @@
+{
+  "name": "serverapi",
+  "version": "1.0.0",
+  "description": "Servidor API REST para el frontend del proyecto de Analisis de Sistemas 2 (Punto de Venta de Pasteleria)",
+  "main": "src/mainserver.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/mainserver.js",
+    "dev": "nodemon src/mainserver.js"
+  },
+  "author": "Integrantes del Grupo #6 (Gary Xiloj, Andres Ixcamey, Dennis Alquijay, Jose Esquite)",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

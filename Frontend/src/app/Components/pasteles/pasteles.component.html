@@ -1,0 +1,135 @@
+<div>
+    <div class="row justify-content-center titulo-pagina">
+        <h1 class="col-auto fs-2 fw-bold my-5">Pasteles</h1>
+    </div>
+
+
+    <div class="row">
+        <form class="row form" [formGroup]="formGroup" (ngSubmit)="registrar()" novalidate>
+            <input type="hidden" formControlName="Id">
+
+            <div class="col-2 form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre de pastel</mat-label>
+                    <input matInput formControlName="NombrePastel" required>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('NombrePastel')?.errors &&
+                        (formGroup.get('NombrePastel')?.dirty || formGroup.get('NombrePastel')?.touched)">
+                        <ul>
+                            <li *ngIf="formGroup.get('NombrePastel')?.errors">Campo requerido</li>
+                        </ul>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-2 form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Descripción de pastel</mat-label>
+                    <input matInput formControlName="Descripcion">
+                </mat-form-field>
+            </div>
+
+            <div class="col-2 form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Sabor del pastel</mat-label>
+                    <mat-select formControlName="IdSabor" required>
+                        <mat-option></mat-option>
+                        <mat-option *ngFor="let option of optionsSabores"  value="{{ option.IdSabor }}">{{ option.NombreSabor }}</mat-option>
+                    </mat-select>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('IdSabor')?.errors &&
+                        (formGroup.get('IdSabor')?.dirty || formGroup.get('IdSabor')?.touched)">
+                        <ul>
+                            <li *ngIf="formGroup.get('IdSabor')?.errors">Campo requerido</li>
+                        </ul>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-2 form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Relleno del pastel</mat-label>
+                    <mat-select formControlName="IdRelleno" required>
+                        <mat-option></mat-option>
+                        <mat-option *ngFor="let option of optionsRellenos"  value="{{ option.IdRelleno }}">{{ option.NombreRelleno }}</mat-option>
+                    </mat-select>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('IdRelleno')?.errors &&
+                        (formGroup.get('IdRelleno')?.dirty || formGroup.get('IdRelleno')?.touched)">
+                        <ul>
+                            <li *ngIf="formGroup.get('IdRelleno')?.errors">Campo requerido</li>
+                        </ul>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-1 form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Costo</mat-label>
+                    <input matInput formControlName="Costo" required>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('Costo')?.errors &&
+                        (formGroup.get('Costo')?.dirty || formGroup.get('Costo')?.touched)">
+                        <ul>
+                            <li *ngIf="formGroup.get('Costo')?.errors">Campo requerido</li>
+                        </ul>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-1 form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Precio</mat-label>
+                    <input matInput formControlName="Precio" required>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('Precio')?.errors &&
+                        (formGroup.get('Precio')?.dirty || formGroup.get('Precio')?.touched)">
+                        <ul>
+                            <li *ngIf="formGroup.get('Precio')?.errors">Campo requerido</li>
+                        </ul>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-2 form-group">
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Salvar</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="col-auto">Nombre</th>
+                            <th>Descripción</th>
+                            <th>Sabor</th>
+                            <th>Relleno</th>
+                            <th>Costo</th>
+                            <th>Precio</th>
+                            <th class="col-2">Opciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr *ngFor="let item of pastelesLst" class="text-left">
+                            <td class="col-auto fw-bold fs-6">{{ item.NombrePastes }}</td>
+                            <td class="fs-6">{{ item.Descripcion }}</td>
+                            <td class="fs-6">{{ item.Sabor }}</td>
+                            <td class="fs-6">{{ item.Relleno }}</td>
+                            <td class="fs-6">{{ item.Costo }}</td>
+                            <td class="fs-6">{{ item.Precio }}</td>
+                            <td class="col-2">
+                                <div class="opciones">
+                                    <fa-icon [icon]="faEdit" class="fs-3 text-info" title="Editar sabor" (click)="modoEdicion(item)"></fa-icon>
+                                    <fa-icon [icon]="faTrash" class="fs-3 text-danger" title="Eliminar sabor" (click)="eliminar(item.IdSabor)"></fa-icon>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
