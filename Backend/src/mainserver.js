@@ -6,6 +6,7 @@ import rellenosRoutes from './routes/rellenos.routes.js'
 import pastelesRoutes from './routes/pasteles.routes.js'
 import productosRoutes from './routes/productos.routes.js'
 import ingredientsRoutes from './routes/ingredientes.routes.js'
+import familiesRoutes from './routes/familia_pastel.routes.js'
 import cors from 'cors'
 
 const app = express()
@@ -24,6 +25,7 @@ app.use('/api', rellenosRoutes)
 app.use('/api', pastelesRoutes)
 app.use('/api', productosRoutes)
 app.use('/api', ingredientsRoutes)
+app.use('/api', familiesRoutes)
 
 app.listen(port, () => console.log(`Escuchando en puerto ${port}...`))
 
