@@ -1,0 +1,60 @@
+<div>
+    <div class="row justify-content-center titulo-pagina">
+        <h1 class="col-auto fs-2 fw-bold my-5">Familias de pastel</h1>
+    </div>
+
+
+    <div class="row">
+        <form class="row form" [formGroup]="formGroup" (ngSubmit)="registrar()" novalidate>
+            <div class="col-2 form-group">
+                <input type="hidden" formControlName="Id">
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre de sabor</mat-label>
+                    <input matInput formControlName="NombreFamiliaPastel" required>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('NombreFamiliaPastel')?.errors &&
+                        (formGroup.get('NombreFamiliaPastel')?.dirty || formGroup.get('NombreFamiliaPastel')?.touched)">
+                        <ul>
+                            <li *ngIf="formGroup.get('NombreFamiliaPastel')?.errors">Campo requerido</li>
+                        </ul>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-2 form-group">
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Salvar</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="col-auto">Nombre</th>
+                            <th class="col-2">Opciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr *ngFor="let item of familiasPastelLst" class="text-left">
+                            <td class="col-auto fw-bold fs-6">{{ item.NombreFamiliaPastel }}</td>
+                            <td class="col-2">
+                                <div class="opciones">
+                                    <fa-icon [icon]="faEdit" class="fs-3 text-info" title="Editar familia de pastel" (click)="modoEdicion(item)"></fa-icon>
+                                    <fa-icon [icon]="faTrash" class="fs-3 text-danger" title="Eliminar familia de pastel" (click)="eliminar(item.Id)"></fa-icon>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

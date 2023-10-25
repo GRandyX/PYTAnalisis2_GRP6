@@ -28,6 +28,7 @@ import { SaboresComponent } from './Components/sabores/sabores.component';
 import { PastelesComponent } from './Components/pasteles/pasteles.component';
 import { ProveedoresComponent } from './Components/proveedores/proveedores.component';
 import { ProductosComponent } from './Components/productos/productos.component';
+import { FamiliaPastelComponent } from './Components/familia-pastel/familia-pastel.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { ProductosComponent } from './Components/productos/productos.component';
 		PastelesComponent,
 		ProveedoresComponent,
   		ProductosComponent,
+    FamiliaPastelComponent,
 	],
 	imports: [
 		BrowserModule,

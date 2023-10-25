@@ -10,6 +10,7 @@ import { SaboresComponent } from './Components/sabores/sabores.component';
 import { PastelesComponent } from './Components/pasteles/pasteles.component';
 import { ProveedoresComponent } from './Components/proveedores/proveedores.component';
 import { ProductosComponent } from './Components/productos/productos.component';
+import { FamiliaPastelComponent } from './Components/familia-pastel/familia-pastel.component';
 
 const routes: Routes = [
 	{
@@ -27,13 +28,11 @@ const routes: Routes = [
 	},
 	{
 		path: "home",
-		component: HomeComponent,
-		//canActivate: [authGuard]
+		component: HomeComponent
 	},
 	{
 		path: "catalogo",
-		component: CatalogoComponent,
-		//canActivate: [authGuard]
+		component: CatalogoComponent
 	},
 	{
 		path: "rellenos",
@@ -58,6 +57,11 @@ const routes: Routes = [
 	{
 		path: "productos",
 		component: ProductosComponent,
+		canActivate: [authGuard]
+	},
+	{
+		path: "familia_pastel",
+		component: FamiliaPastelComponent,
 		canActivate: [authGuard]
 	}
 ];
