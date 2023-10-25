@@ -1,0 +1,69 @@
+<div>
+    <div class="row justify-content-center titulo-pagina">
+        <h1 class="col-auto fs-2 fw-bold my-5">Rellenos</h1>
+    </div>
+
+
+    <div class="row">
+        <form class="row form" [formGroup]="formGroup" (ngSubmit)="registrar()" novalidate>
+            <div class="col-2 form-group">
+                <input type="hidden"  formControlName="Id">
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre de relleno</mat-label>
+                    <input matInput formControlName="NombreRelleno" required>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('NombreRelleno')?.errors &&
+                        (formGroup.get('NombreRelleno')?.dirty || formGroup.get('NombreRelleno')?.touched)">
+                        <ul>
+                            <li *ngIf="formGroup.get('NombreRelleno')?.errors">Campo requerido</li>
+                        </ul>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-6 form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Descripción de relleno</mat-label>
+                    <input matInput formControlName="Descripcion">
+                </mat-form-field>
+            </div>
+
+            <div class="col-2 form-group">
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Salvar</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="col-auto">Nombre</th>
+                            <th>Descripción</th>
+                            <th class="col-2">Opciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr *ngFor="let item of rellenosLst" class="text-left">
+                            <td class="col-auto fw-bold fs-6">{{ item.NombreRelleno }}</td>
+                            <td class="fs-6">{{ item.Descripcion }}</td>
+                            <td class="col-2">
+                                <div class="opciones">
+                                    <fa-icon [icon]="faEdit" class="fs-3 text-info" title="Editar relleno" (click)="modoEdicion(item)"></fa-icon>
+                                    <fa-icon [icon]="faTrash" class="fs-3 text-danger" title="Eliminar relleno" (click)="eliminar(item.IdRelleno)"></fa-icon>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

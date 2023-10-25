@@ -7,11 +7,11 @@
 				<div class="form-group">
 					<mat-form-field appearance="fill">
 						<mat-label>Nombre de usuario</mat-label>
-						<input matInput formControlName="username" required>
-						<mat-error class="form-error-container" *ngIf="userForm.get('username')?.errors &&
-							(userForm.get('username')?.dirty || userForm.get('username')?.touched)">
+						<input matInput formControlName="Usuario" required>
+						<mat-error class="form-error-container" *ngIf="userForm.get('Usuario')?.errors &&
+							(userForm.get('Usuario')?.dirty || userForm.get('Usuario')?.touched)">
 							<ul>
-                                <li *ngIf="userForm.get('username')?.errors">Nombre de usuario es erroneo</li>
+                                <li *ngIf="userForm.get('Usuario')?.errors">Nombre de usuario es erroneo</li>
 							</ul>
 						</mat-error>
 					</mat-form-field>
@@ -20,18 +20,21 @@
 				<div class="form-group">
 					<mat-form-field appearance="fill">
 						<mat-label>Contraseña del usuario</mat-label>
-						<input matInput type="password" formControlName="password" required>
-						<mat-error class="form-error-container" *ngIf="userForm.get('password')?.errors &&
-							(userForm.get('password')?.dirty || userForm.get('password')?.touched)">
+						<input matInput type="password" formControlName="Contrasena" required>
+						<mat-error class="form-error-container" *ngIf="userForm.get('Contrasena')?.errors &&
+							(userForm.get('Contrasena')?.dirty || userForm.get('Contrasena')?.touched)">
 							<ul>
-                                <li *ngIf="userForm.get('password')?.errors">Contraseña del usuario es erronea</li>
+                                <li *ngIf="userForm.get('Contrasena')?.errors">Contraseña del usuario es erronea</li>
 							</ul>
 						</mat-error>
 					</mat-form-field>
 				</div>
 
 				<button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
-				<p class="mt-4 mb-2 font-weight-bold">&copy; 2023</p>
+				<p class="my-4">
+					<a class="fw-bold" href="/register">Registrate</a>
+				</p>
+				<p class="my-2">&copy; 2023</p>
 			</form>
 		</div>
 	</div>

@@ -7,11 +7,11 @@ import { ToastService } from 'src/app/Services/toast.service';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
-	selector: 'app-login',
-	templateUrl: './login.component.html',
-	styleUrls: ['./login.component.css']
+	selector: 'app-register',
+	templateUrl: './register.component.html',
+	styleUrls: ['./register.component.css']
 })
-export class LoginComponent extends Shared implements OnInit {
+export class RegisterComponent extends Shared implements OnInit {
 
 	constructor(
 		toastService: ToastService,
@@ -22,35 +22,40 @@ export class LoginComponent extends Shared implements OnInit {
 		this.userForm = this.createFormGroup();
 	}
 
+	public optionsIdPermiso:any = [
+		{ name: "Estandar", value: "1" },
+		{ name: "Administrador", value: "2" }
+	];
 	userForm: FormGroup;
 
 	ngOnInit(): void {
 		if (this.authService.loggedIn()) {
-			this.router.navigate(['/home']);
+			this.router.navigate(['/']);
 		}
 	}
 
 	createFormGroup() {
 		return new FormGroup({
+			NombreCompleto: new FormControl(null, [Validators.required]),
 			Usuario: new FormControl(null, [Validators.required]),
-			Contrasena: new FormControl(null, [Validators.required])
+			Contrasena: new FormControl(null, [Validators.required]),
+			IdPermiso: new FormControl(null, [Validators.required])
 		});
 	}
 
-	signIn() {
+	signUp() {
 		if (this.userForm.valid) {
-			this.authService.validateSignIn(this.userForm.value).subscribe(
+			this.authService.signUp(this.userForm.value).subscribe(
 				(res:any) => {
-					if (res.error) {
-						this.showMsgDanger(res.error);
+					if (res.errors) {
+						this.showMsgDanger(res.errors);
 					} else {
-						localStorage.setItem('token', res);
-						this.router.navigate(['/home']);
+						this.showMsgSuccess("Registro creado con éxito");
 					}
 				},
 				(err:any) => {
 					if (err.name === "HttpErrorResponse")
-						this.showMsgDanger([ err.error.error ]);
+						this.showMsgDanger(["Hubo un error al intentar registrarse"]);
 				}
 			);
 		} else {

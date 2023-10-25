@@ -3,6 +3,6 @@ export const environment = {
 	api_rest: {
 		protocol: "http",
 		host: "localhost",
-		port: 4000,
+		port: 8000,
 	}
 };
