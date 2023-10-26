@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Shared } from 'src/app/Class/shared';
 import { AuthService } from 'src/app/Services/auth.service';
+import { FamiliaPastelService } from 'src/app/Services/familia-pastel.service';
 import { PastelesService } from 'src/app/Services/pasteles.service';
 import { RellenosService } from 'src/app/Services/rellenos.service';
 import { SaboresService } from 'src/app/Services/sabores.service';
@@ -22,6 +23,7 @@ export class PastelesComponent extends Shared implements OnInit {
 	pastelesLst:any = [];
 	optionsSabores:any = [];
 	optionsRellenos:any = [];
+	optionsFamiliasPastel:any = [];
 	modoNuevo:boolean = true;
 
 	constructor(
@@ -30,6 +32,7 @@ export class PastelesComponent extends Shared implements OnInit {
 		private pastelesService: PastelesService,
 		private saboresService: SaboresService,
 		private rellenosService: RellenosService,
+		private familiaPastelService: FamiliaPastelService,
 		private router: Router
 	) {
 		super(toastService, authService);
@@ -39,6 +42,7 @@ export class PastelesComponent extends Shared implements OnInit {
 	ngOnInit(): void {
 		this.obtenerSabores();
 		this.obtenerRellenos();
+		this.obtenerFamiliasPastel();
 		this.obtenerPasteles();
 	}
 
@@ -50,7 +54,9 @@ export class PastelesComponent extends Shared implements OnInit {
 			Costo: new FormControl(null, [ Validators.required ]),
 			Precio: new FormControl(null, [ Validators.required ]),
 			IdRelleno: new FormControl(null, [ Validators.required ]),
-			IdSabor: new FormControl(null, [ Validators.required ])
+			IdSabor: new FormControl(null, [ Validators.required ]),
+			IdFamilia: new FormControl(null, [ Validators.required ]),
+			Existencia: new FormControl(null, [ Validators.required ])
 		});
 	}
 
@@ -62,6 +68,8 @@ export class PastelesComponent extends Shared implements OnInit {
 		this.formGroup.get("Precio")?.setValue("");
 		this.formGroup.get("IdRelleno")?.setValue("");
 		this.formGroup.get("IdSabor")?.setValue("");
+		this.formGroup.get("IdFamilia")?.setValue("");
+		this.formGroup.get("Existencia")?.setValue("");
 	}
 
 	obtenerPasteles() {
@@ -73,6 +81,7 @@ export class PastelesComponent extends Shared implements OnInit {
 					let pastel = res[idx];
 					pastel.Relleno = await this.obtenerNombreRelleno(pastel.IdRelleno);
 					pastel.Sabor = await this.obtenerNombreSabor(pastel.IdSabor);
+					pastel.Familia = await this.obtenerNombreFamiliaPastel(pastel.IdFamilia);
 					pasteles.push(pastel);
 				}
 
@@ -80,6 +89,31 @@ export class PastelesComponent extends Shared implements OnInit {
 			}
 		});
 	}
+
+	obtenerRellenos() {
+		this.rellenosService.obtenerRellenos().subscribe({
+			next: (res) => {
+				this.optionsRellenos = res;
+			}
+		});
+	}
+
+	obtenerSabores() {
+		this.saboresService.obtenerSabores().subscribe({
+			next: (res) => {
+				this.optionsSabores = res;
+			}
+		});
+	}
+
+	obtenerFamiliasPastel() {
+		this.familiaPastelService.obtenerFamiliasPastel().subscribe({
+			next: (res) => {
+				this.optionsFamiliasPastel = res;
+			}
+		});
+	}
+
 
 	async obtenerNombreRelleno(id: number) {
 		return new Promise((resolve) => {
@@ -92,14 +126,6 @@ export class PastelesComponent extends Shared implements OnInit {
 					resolve(resp);
 				}
 			});
-		});
-	}
-
-	obtenerRellenos() {
-		this.rellenosService.obtenerRellenos().subscribe({
-			next: (res) => {
-				this.optionsRellenos = res;
-			}
 		});
 	}
 
@@ -117,13 +143,20 @@ export class PastelesComponent extends Shared implements OnInit {
 		});
 	}
 
-	obtenerSabores() {
-		this.saboresService.obtenerSabores().subscribe({
-			next: (res) => {
-				this.optionsSabores = res;
-			}
+	async obtenerNombreFamiliaPastel(id: number) {
+		return new Promise((resolve) => {
+			let resp = "";
+			this.familiaPastelService.obtenerFamiliaPastel(id).subscribe({
+				next: (res:any) => {
+					resp = res.NombreFamilia;
+				},
+				complete: () => {
+					resolve(resp);
+				}
+			});
 		});
 	}
+
 
 	registrar() {
 		if (this.formGroup.valid) {
@@ -197,6 +230,8 @@ export class PastelesComponent extends Shared implements OnInit {
 		this.formGroup.get("Precio")?.setValue(param.Precio);
 		this.formGroup.get("IdRelleno")?.setValue(param.IdRelleno);
 		this.formGroup.get("IdSabor")?.setValue(param.IdSabor);
+		this.formGroup.get("IdFamilia")?.setValue(param.IdFamilia);
+		this.formGroup.get("Existencia")?.setValue(param.Existencia);
 	}
 
 }

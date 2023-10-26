@@ -19,6 +19,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .form-group button {
     height: 3.5rem;
+    width: 100%;
 }
 
 .mat-mdc-form-field-subscript-wrapper {
@@ -51,4 +52,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .form-group {
     height: 6rem;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    color: var(--bs-dropdown-link-active-color);
+    text-decoration: none;
+    background-color: var(--bs-dropdown-link-active-bg);
 }

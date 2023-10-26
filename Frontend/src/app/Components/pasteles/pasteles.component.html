@@ -8,7 +8,7 @@
         <form class="row form" [formGroup]="formGroup" (ngSubmit)="registrar()" novalidate>
             <input type="hidden" formControlName="Id">
 
-            <div class="col-2 form-group">
+            <div class="col-4 form-group">
                 <mat-form-field appearance="fill">
                     <mat-label>Nombre de pastel</mat-label>
                     <input matInput formControlName="NombrePastel" required>
@@ -21,14 +21,30 @@
                 </mat-form-field>
             </div>
 
-            <div class="col-2 form-group">
+            <div class="col-4 form-group">
                 <mat-form-field appearance="fill">
                     <mat-label>Descripción de pastel</mat-label>
                     <input matInput formControlName="Descripcion">
                 </mat-form-field>
             </div>
 
-            <div class="col-2 form-group">
+            <div class="col-3 form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Familia de pastel</mat-label>
+                    <mat-select formControlName="IdFamilia" required>
+                        <mat-option></mat-option>
+                        <mat-option *ngFor="let option of optionsFamiliasPastel"  value="{{ option.IdFamilia }}">{{ option.NombreFamilia }}</mat-option>
+                    </mat-select>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('IdFamilia')?.errors &&
+                        (formGroup.get('IdFamilia')?.dirty || formGroup.get('IdFamilia')?.touched)">
+                        <ul>
+                            <li *ngIf="formGroup.get('IdFamilia')?.errors">Campo requerido</li>
+                        </ul>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-3 form-group">
                 <mat-form-field appearance="fill">
                     <mat-label>Sabor del pastel</mat-label>
                     <mat-select formControlName="IdSabor" required>
@@ -44,7 +60,7 @@
                 </mat-form-field>
             </div>
 
-            <div class="col-2 form-group">
+            <div class="col-3 form-group">
                 <mat-form-field appearance="fill">
                     <mat-label>Relleno del pastel</mat-label>
                     <mat-select formControlName="IdRelleno" required>
@@ -86,6 +102,19 @@
                 </mat-form-field>
             </div>
 
+            <div class="col-1 form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Existencia</mat-label>
+                    <input matInput formControlName="Existencia" required>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('Existencia')?.errors &&
+                        (formGroup.get('Existencia')?.dirty || formGroup.get('Existencia')?.touched)">
+                        <ul>
+                            <li *ngIf="formGroup.get('Existencia')?.errors">Campo requerido</li>
+                        </ul>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
             <div class="col-2 form-group">
                 <button type="submit" class="btn btn-lg btn-primary btn-block">Salvar</button>
             </div>
@@ -101,6 +130,7 @@
                         <tr>
                             <th class="col-auto">Nombre</th>
                             <th>Descripción</th>
+                            <th>Familia</th>
                             <th>Sabor</th>
                             <th>Relleno</th>
                             <th>Costo</th>
@@ -114,6 +144,7 @@
                         <tr *ngFor="let item of pastelesLst" class="text-left">
                             <td class="col-auto fw-bold fs-6">{{ item.NombrePastes }}</td>
                             <td class="fs-6">{{ item.Descripcion }}</td>
+                            <td class="fs-6">{{ item.Familia }}</td>
                             <td class="fs-6">{{ item.Sabor }}</td>
                             <td class="fs-6">{{ item.Relleno }}</td>
                             <td class="fs-6">{{ item.Costo }}</td>
