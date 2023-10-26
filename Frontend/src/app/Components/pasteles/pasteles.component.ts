@@ -25,6 +25,7 @@ export class PastelesComponent extends Shared implements OnInit {
 	optionsRellenos:any = [];
 	optionsFamiliasPastel:any = [];
 	modoNuevo:boolean = true;
+	urlImagenesPasteles:string = "http://localhost:4200/assets/pasteles/";
 
 	constructor(
 		toastService: ToastService,
@@ -56,7 +57,8 @@ export class PastelesComponent extends Shared implements OnInit {
 			IdRelleno: new FormControl(null, [ Validators.required ]),
 			IdSabor: new FormControl(null, [ Validators.required ]),
 			IdFamilia: new FormControl(null, [ Validators.required ]),
-			Existencia: new FormControl(null, [ Validators.required ])
+			Existencia: new FormControl(null, [ Validators.required ]),
+			UrlImagen: new FormControl(null, [ Validators.required ])
 		});
 	}
 
@@ -70,6 +72,7 @@ export class PastelesComponent extends Shared implements OnInit {
 		this.formGroup.get("IdSabor")?.setValue("");
 		this.formGroup.get("IdFamilia")?.setValue("");
 		this.formGroup.get("Existencia")?.setValue("");
+		this.formGroup.get("UrlImagen")?.setValue("");
 	}
 
 	obtenerPasteles() {
@@ -157,10 +160,22 @@ export class PastelesComponent extends Shared implements OnInit {
 		});
 	}
 
+	capturarArchivo(event:any) {
+		let archivo = event.target.files;
+		if (archivo && archivo[0]) {
+			var reader = new FileReader();
+			reader.onload = (ev:any) => {
+				this.formGroup.get("UrlImagen")?.setValue(ev.target.result);
+			}
+			reader.readAsDataURL(archivo[0]);
+			event.srcElement.value = null;
+		}
+	}
+
 
 	registrar() {
-		if (this.formGroup.valid) {
 
+		if (this.formGroup.valid) {
 			let params = this.formGroup.value;
 			let id = params.Id;
 			delete params.id;
@@ -232,6 +247,7 @@ export class PastelesComponent extends Shared implements OnInit {
 		this.formGroup.get("IdSabor")?.setValue(param.IdSabor);
 		this.formGroup.get("IdFamilia")?.setValue(param.IdFamilia);
 		this.formGroup.get("Existencia")?.setValue(param.Existencia);
+		this.formGroup.get("UrlImagen")?.setValue(param.UrlImagen);
 	}
 
 }

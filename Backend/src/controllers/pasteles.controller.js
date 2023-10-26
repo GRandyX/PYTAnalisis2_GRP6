@@ -38,9 +38,9 @@ export const nuevoPastel = async(req, res) => {
         }
 
         try{
-            const {NombrePastel, IdSabor, IdFamilia, IdRelleno, Descripcion, Costo, Precio, Existencia} = req.body
-            const [rows] = await pool.query('INSERT INTO pasteles (Id, IdFamilia, NombrePastes, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [nuevoId, IdFamilia, NombrePastel, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia])
+            const {NombrePastel, IdSabor, IdFamilia, IdRelleno, Descripcion, Costo, Precio, Existencia, UrlImagen} = req.body
+            const [rows] = await pool.query('INSERT INTO pasteles (Id, IdFamilia, NombrePastes, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia, UrlImagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            [nuevoId, IdFamilia, NombrePastel, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia, UrlImagen])
             res.send({
                 nuevoId,
                 NombrePastel,
@@ -74,10 +74,10 @@ export const borrarPastel = async(req, res) => {
 
 export const actualizarPastel = async(req, res) => {
     const IdPastel = req.params.id
-    const {IdFamilia, NombrePastel, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia} = req.body
+    const {IdFamilia, NombrePastel, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia, UrlImagen} = req.body
     try{
-        const[result] = await pool.query('UPDATE pasteles SET IdFamilia = ?, NombrePastes = ?, IdSabor = ?, IdRelleno = ?, Descripcion = ?, Costo = ?, Precio = ?, Existencia = ? WHERE Id = ?', 
-        [IdFamilia, NombrePastel, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia, IdPastel])
+        const[result] = await pool.query('UPDATE pasteles SET IdFamilia = ?, NombrePastes = ?, IdSabor = ?, IdRelleno = ?, Descripcion = ?, Costo = ?, Precio = ?, Existencia = ?, UrlImagen = ? WHERE Id = ?',
+        [IdFamilia, NombrePastel, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia, UrlImagen, IdPastel])
         if (result.affectedRows == 0){
             res.status(404).json({message: 'Pastel no encontrado'})
         }else{

@@ -44,7 +44,7 @@
                 </mat-form-field>
             </div>
 
-            <div class="col-3 form-group">
+            <div class="col-2 form-group">
                 <mat-form-field appearance="fill">
                     <mat-label>Sabor del pastel</mat-label>
                     <mat-select formControlName="IdSabor" required>
@@ -60,7 +60,7 @@
                 </mat-form-field>
             </div>
 
-            <div class="col-3 form-group">
+            <div class="col-2 form-group">
                 <mat-form-field appearance="fill">
                     <mat-label>Relleno del pastel</mat-label>
                     <mat-select formControlName="IdRelleno" required>
@@ -113,6 +113,11 @@
                         </ul>
                     </mat-error>
                 </mat-form-field>
+            </div>
+
+            <div class="col-2 form-group">
+                <label class="form-label" id="label-urlimagen" for="UrlImagenControl">Imagen de pastel</label>
+                <input class="form-control" type="file" id="UrlImagenControl" (change)="capturarArchivo($event)" hidden required>
             </div>
 
             <div class="col-2 form-group">

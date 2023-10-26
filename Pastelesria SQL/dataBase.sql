@@ -116,7 +116,7 @@ CREATE TABLE `pasteles` (
 	`Costo` decimal(10,2) DEFAULT NULL,
 	`Precio` decimal(10,2) DEFAULT NULL,
 	`Existencia` int DEFAULT NULL,
-	`url_imagen` varchar(150) DEFAULT NULL,
+	`UrlImagen` text DEFAULT NULL,
 	`FechaCreacion` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`Id`) USING BTREE,
 	KEY `IdFamilia` (`IdFamilia`),
