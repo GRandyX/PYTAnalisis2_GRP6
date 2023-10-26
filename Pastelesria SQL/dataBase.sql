@@ -116,15 +116,15 @@ CREATE TABLE `pasteles` (
 	`Costo` decimal(10,2) DEFAULT NULL,
 	`Precio` decimal(10,2) DEFAULT NULL,
 	`Existencia` int DEFAULT NULL,
-	`url_imagen` varchar(150) DEFAULT NULL, 
+	`url_imagen` varchar(150) DEFAULT NULL,
 	`FechaCreacion` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`Id`) USING BTREE,
 	KEY `IdFamilia` (`IdFamilia`),
 	KEY `IdSabor` (`IdSabor`),
 	KEY `IdRelleno` (`IdRelleno`),
 	CONSTRAINT `pasteles_ibfk_1` FOREIGN KEY (`IdSabor`) REFERENCES `sabor` (`IdSabor`),
-	CONSTRAINT `pasteles_ibfk_2` FOREIGN KEY (`IdRelleno`) REFERENCES `relleno` (`IdRelleno`)
-	CONSTRAINT `pasteles_ibfk_3` FOREIGN KEY (`IdFamilia`) REFERENCES `familia_pasteles`(`IdFamilia`);
+	CONSTRAINT `pasteles_ibfk_2` FOREIGN KEY (`IdRelleno`) REFERENCES `relleno` (`IdRelleno`),
+	CONSTRAINT `pasteles_ibfk_3` FOREIGN KEY (`IdFamilia`) REFERENCES `familia_pasteles`(`IdFamilia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 

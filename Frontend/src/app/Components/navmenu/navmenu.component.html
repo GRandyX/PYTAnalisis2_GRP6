@@ -28,11 +28,11 @@
 				</li>
 
 				<li class="nav-item" *ngIf="isLogged()">
-					<a class="nav-link" (click)="logout()"><fa-icon [icon]="faClose"></fa-icon>Cerrar sesión</a>
+					<a class="nav-link" (click)="logout()" style="cursor: pointer;"><fa-icon [icon]="faClose"></fa-icon>Cerrar sesión</a>
 				</li>
 
 				<li class="nav-item" *ngIf="!isLogged()">
-					<a class="nav-link" routerLink="/login"><fa-icon [icon]="faKey"></fa-icon>Iniciar sesión</a>
+					<a class="nav-link" routerLink="/login" style="cursor: pointer;"><fa-icon [icon]="faKey"></fa-icon>Iniciar sesión</a>
 				</li>
 			</ul>
 		</div>

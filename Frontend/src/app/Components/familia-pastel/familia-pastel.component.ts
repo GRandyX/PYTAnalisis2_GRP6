@@ -37,13 +37,13 @@ export class FamiliaPastelComponent extends Shared implements OnInit {
 	createFormGroup() {
 		return new FormGroup({
 			Id: new FormControl(null),
-			NombreFamiliaPastel: new FormControl(null, [Validators.required])
+			NombreFamilia: new FormControl(null, [Validators.required])
 		});
 	}
 
 	clearForm() {
 		this.formGroup.get("Id")?.setValue("");
-		this.formGroup.get("NombreFamiliaPastel")?.setValue("");
+		this.formGroup.get("NombreFamilia")?.setValue("");
 	}
 
 	obtenerFamiliasPastel() {
@@ -70,7 +70,7 @@ export class FamiliaPastelComponent extends Shared implements OnInit {
 					},
 					error: (err:any) => {
 						if (err.name === "HttpErrorResponse")
-							this.showMsgDanger(["Error al registrar '"+ params.NombreFamiliaPastel +"'"]);
+							this.showMsgDanger(["Error al registrar '"+ params.NombreFamilia +"'"]);
 					},
 					complete: () => {
 						console.log("**********  FUNCION REGISTRAR COMPLETA  **********");
@@ -85,7 +85,7 @@ export class FamiliaPastelComponent extends Shared implements OnInit {
 					},
 					error: (err:any) => {
 						if (err.name === "HttpErrorResponse")
-							this.showMsgDanger(["Error al editar '"+ params.NombreFamiliaPastel +"'"]);
+							this.showMsgDanger(["Error al editar '"+ params.NombreFamilia +"'"]);
 					},
 					complete: () => {
 						console.log("**********  FUNCION EDITAR COMPLETA  **********");
@@ -120,7 +120,7 @@ export class FamiliaPastelComponent extends Shared implements OnInit {
 	modoEdicion(param: any) {
 		this.modoNuevo = false;
 		this.formGroup.get("Id")?.setValue(param.IdSabor);
-		this.formGroup.get("NombreFamiliaPastel")?.setValue(param.NombreFamiliaPastel);
+		this.formGroup.get("NombreFamilia")?.setValue(param.NombreFamilia);
 	}
 
 }

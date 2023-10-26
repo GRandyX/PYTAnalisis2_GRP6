@@ -6,16 +6,16 @@
 
     <div class="row">
         <form class="row form" [formGroup]="formGroup" (ngSubmit)="registrar()" novalidate>
-            <div class="col-2 form-group">
+            <div class="col-4 form-group">
                 <input type="hidden" formControlName="Id">
 
                 <mat-form-field appearance="fill">
-                    <mat-label>Nombre de sabor</mat-label>
-                    <input matInput formControlName="NombreFamiliaPastel" required>
-                    <mat-error class="form-error-container" *ngIf="formGroup.get('NombreFamiliaPastel')?.errors &&
-                        (formGroup.get('NombreFamiliaPastel')?.dirty || formGroup.get('NombreFamiliaPastel')?.touched)">
+                    <mat-label>Nombre familia de pastel</mat-label>
+                    <input matInput formControlName="NombreFamilia" required>
+                    <mat-error class="form-error-container" *ngIf="formGroup.get('NombreFamilia')?.errors &&
+                        (formGroup.get('NombreFamilia')?.dirty || formGroup.get('NombreFamilia')?.touched)">
                         <ul>
-                            <li *ngIf="formGroup.get('NombreFamiliaPastel')?.errors">Campo requerido</li>
+                            <li *ngIf="formGroup.get('NombreFamilia')?.errors">Campo requerido</li>
                         </ul>
                     </mat-error>
                 </mat-form-field>
@@ -42,7 +42,7 @@
                     <tbody>
 
                         <tr *ngFor="let item of familiasPastelLst" class="text-left">
-                            <td class="col-auto fw-bold fs-6">{{ item.NombreFamiliaPastel }}</td>
+                            <td class="col-auto fw-bold fs-6">{{ item.NombreFamilia }}</td>
                             <td class="col-2">
                                 <div class="opciones">
                                     <fa-icon [icon]="faEdit" class="fs-3 text-info" title="Editar familia de pastel" (click)="modoEdicion(item)"></fa-icon>
