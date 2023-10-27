@@ -1,4 +1,9 @@
 import {pool} from '../db.js'
+import fs from 'fs';
+import { v4 as uuid  } from 'uuid';
+
+const urlFrontend = "http://localhost:4200/assets/pasteles/";
+const pathImagen = "C:\\'Ruta donde esta el proyecto'\\PYTAnalisis2_GRP6\\Frontend\\src\\assets\\pasteles\\";
 
 export const listadoPasteles = async(req, res) => {
     try{
@@ -9,7 +14,6 @@ export const listadoPasteles = async(req, res) => {
         res.status(500).send('Error interno del servidor')
     }
 }
-
 
 export const obtenerPastel = async(req, res) => {
     const IdPastel = req.params.id
@@ -26,7 +30,6 @@ export const obtenerPastel = async(req, res) => {
     }
 }
 
-
 export const nuevoPastel = async(req, res) => {
     try{
         const [resultId] = await pool.query('SELECT MAX(Id) AS maxId FROM pasteles')
@@ -38,7 +41,9 @@ export const nuevoPastel = async(req, res) => {
         }
 
         try{
-            const {NombrePastel, IdSabor, IdFamilia, IdRelleno, Descripcion, Costo, Precio, Existencia, UrlImagen} = req.body
+            var {NombrePastel, IdSabor, IdFamilia, IdRelleno, Descripcion, Costo, Precio, Existencia, UrlImagen} = req.body
+            UrlImagen = uploadFile(UrlImagen, pathImagen);
+
             const [rows] = await pool.query('INSERT INTO pasteles (Id, IdFamilia, NombrePastes, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia, UrlImagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
             [nuevoId, IdFamilia, NombrePastel, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia, UrlImagen])
             res.send({
@@ -74,7 +79,9 @@ export const borrarPastel = async(req, res) => {
 
 export const actualizarPastel = async(req, res) => {
     const IdPastel = req.params.id
-    const {IdFamilia, NombrePastel, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia, UrlImagen} = req.body
+    var {IdFamilia, NombrePastel, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia, UrlImagen} = req.body
+    UrlImagen = uploadFile(UrlImagen, pathImagen);
+
     try{
         const[result] = await pool.query('UPDATE pasteles SET IdFamilia = ?, NombrePastes = ?, IdSabor = ?, IdRelleno = ?, Descripcion = ?, Costo = ?, Precio = ?, Existencia = ?, UrlImagen = ? WHERE Id = ?',
         [IdFamilia, NombrePastel, IdSabor, IdRelleno, Descripcion, Costo, Precio, Existencia, UrlImagen, IdPastel])
@@ -87,4 +94,15 @@ export const actualizarPastel = async(req, res) => {
         console.error('Error al actualizar el pastel', error)
         res.status(500).send('Error interno del servidor')
     }
+}
+
+const uploadFile = (file_base64, path) => {
+    var file = file_base64.split(','),
+        file_extension = file[0].split('/')[1].replace(';base64', ''),
+        file_decoded = Buffer.from(file[1], 'base64'),
+        file_name = `${uuid()}.${file_extension}`;
+    fs.writeFileSync(path + file_name, file_decoded, "binary");
+
+    let UrlImagen = urlFrontend + file_name;
+    return UrlImagen;
 }
