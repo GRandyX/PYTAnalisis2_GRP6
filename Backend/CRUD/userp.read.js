@@ -43,9 +43,9 @@ app.get('/proveedores/:id', (req, res) => {
 });
 
 app.post('/proveedores', (req, res) => {
-  const { nombre, direccion, telefono, email } = req.body;
-  const query = 'INSERT INTO proveedores (nombre, direccion, telefono, email) VALUES (?, ?, ?, ?)';
-  db.query(query, [nombre, direccion, telefono, email], (err, result) => {
+  const { NombreProveedor, Direccion, NIT } = req.body;
+  const query = 'INSERT INTO proveedores (NombreProveedor, Direccion, NIT ) VALUES (?, ?, ?, ?)';
+  db.query(query, [NombreProveedor, Direccion, NIT, email], (err, result) => {
     if (err) {
       console.error('Error al crear proveedor:', err);
       res.status(500).send('Error al crear proveedor');
@@ -57,9 +57,9 @@ app.post('/proveedores', (req, res) => {
 
 app.put('/proveedores/:id', (req, res) => {
   const id = req.params.id;
-  const { nombre, direccion, telefono, email } = req.body;
-  const query = 'UPDATE proveedores SET nombre = ?, direccion = ?, telefono = ?, email = ? WHERE id = ?';
-  db.query(query, [nombre, direccion, telefono, email, id], (err, result) => {
+  const { NombreProveedor, Direccion, NIT } = req.body;
+  const query = 'UPDATE proveedores SET NombreProveedor = ?, Direccion = ?, telefono = ?, email = ? WHERE id = ?';
+  db.query(query, [ NombreProveedor, Direccion, NIT,  id], (err, result) => {
     if (err) {
       console.error('Error al actualizar proveedor:', err);
       res.status(500).send('Error al actualizar proveedor');
