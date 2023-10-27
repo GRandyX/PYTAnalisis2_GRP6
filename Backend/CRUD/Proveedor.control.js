@@ -29,10 +29,10 @@ app.get('/proveedores', (req, res) => {
   });
 });
 
-app.get('/proveedores/:id', (req, res) => {
-  const id = req.params.id;
+app.get('/proveedores/:Id', (req, res) => {
+  const Id = req.params.Id;
   const query = 'SELECT * FROM proveedores WHERE id = ?';
-  db.query(query, [id], (err, result) => {
+  db.query(query, [Id], (err, result) => {
     if (err) {
       console.error('Error al buscar proveedor:', err);
       res.status(500).send('Error al buscar proveedor');
@@ -43,9 +43,9 @@ app.get('/proveedores/:id', (req, res) => {
 });
 
 app.post('/proveedores', (req, res) => {
-  const { NombreProveedor, Direccion, NIT } = req.body;
+  const {Id, NombreProveedor, Direccion, NIT } = req.body;
   const query = 'INSERT INTO proveedores (NombreProveedor, Direccion, NIT ) VALUES (?, ?, ?, ?)';
-  db.query(query, [NombreProveedor, Direccion, NIT, email], (err, result) => {
+  db.query(query, [Id, NombreProveedor, Direccion, NIT ], (err, result) => {
     if (err) {
       console.error('Error al crear proveedor:', err);
       res.status(500).send('Error al crear proveedor');
@@ -55,11 +55,11 @@ app.post('/proveedores', (req, res) => {
   });
 });
 
-app.put('/proveedores/:id', (req, res) => {
-  const id = req.params.id;
-  const { NombreProveedor, Direccion, NIT } = req.body;
+app.put('/proveedores/:Id', (req, res) => {
+  const id = req.params.Id;
+  const { Id, NombreProveedor, Direccion, NIT } = req.body;
   const query = 'UPDATE proveedores SET NombreProveedor = ?, Direccion = ?, telefono = ?, email = ? WHERE id = ?';
-  db.query(query, [ NombreProveedor, Direccion, NIT,  id], (err, result) => {
+  db.query(query, [Id, NombreProveedor, Direccion, NIT ], (err, result) => {
     if (err) {
       console.error('Error al actualizar proveedor:', err);
       res.status(500).send('Error al actualizar proveedor');
@@ -69,10 +69,10 @@ app.put('/proveedores/:id', (req, res) => {
   });
 });
 
-app.delete('/proveedores/:id', (req, res) => {
-  const id = req.params.id;
+app.delete('/proveedores/:Id', (req, res) => {
+  const Id = req.params.Id;
   const query = 'DELETE FROM proveedores WHERE id = ?';
-  db.query(query, [id], (err) => {
+  db.query(query, [Id], (err) => {
     if (err) {
       console.error('Error al eliminar proveedor:', err);
       res.status(500).send('Error al eliminar proveedor');
