@@ -3,7 +3,7 @@ import fs from 'fs';
 import { v4 as uuid  } from 'uuid';
 
 const urlFrontend = "http://localhost:4200/assets/pasteles/";
-const pathImagen = "C:\\'Ruta donde esta el proyecto'\\PYTAnalisis2_GRP6\\Frontend\\src\\assets\\pasteles\\";
+const pathImagen = "C:\\Users\\gxilo\\Documents\\Aalisis2\\Proyecto\\PYTAnalisis2_GRP6\\Frontend\\src\\assets\\pasteles\\";
 
 export const listadoPasteles = async(req, res) => {
     try{

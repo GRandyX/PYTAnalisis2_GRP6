@@ -1,1 +1,26 @@
-<p>catalogo works!</p>
+<!-- product section start here  -->
+<section class="product" id="product">
+    <div class="heading">
+        <h2>Nuestros Productos Favoritos</h2>
+        <div>
+            <input type="text" (keyup)="buscar()" id="nombre_pastel" class="form-control" placeholder="Nombre de pastel">
+        </div>
+    </div>
+    <div class="swiper product-row">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide box" *ngFor="let item of pastelesLst">
+                <div class="img">
+                    <img src="{{ item.UrlImagen }}" alt="">
+                </div>
+                <div class="product-content">
+                    <h3 class="pastel_titulo">{{ item.NombrePastes }}</h3>
+                    <p>{{ item.Descripcion }}</p>
+                    <div class="orderNow">
+                        <button>Agregar Orden </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
